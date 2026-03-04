@@ -1,0 +1,79 @@
+---
+---
+<nav class="navbar">
+  <div class="nav-links">
+    <a href="/">About</a>
+    <a href="/blog">Blog</a>
+  </div>
+  <div class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="moon-icon">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--nav-bg);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .nav-links a {
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover {
+    color: var(--accent-color);
+  }
+
+  .theme-toggle {
+    position: absolute;
+    right: 2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+  }
+
+  .theme-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  [data-theme='dark'] .theme-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+</style>
+
+<script>
+  const themeToggle = document.getElementById('theme-toggle');
+  const getTheme = () => localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  
+  const setTheme = (theme: string) => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  };
+
+  setTheme(getTheme());
+
+  themeToggle?.addEventListener('click', () => {
+    const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+  });
+</script>

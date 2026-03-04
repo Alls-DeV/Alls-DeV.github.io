@@ -1,0 +1,91 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blog');
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: post,
+	}));
+}
+type Props = CollectionEntry<'blog'>;
+
+const post = Astro.props;
+const { Content } = await post.render();
+---
+
+<BaseLayout title={post.data.title}>
+	<article class="blog-post">
+		<div class="container">
+			<div class="post-header">
+				<h1>{post.data.title}</h1>
+				<time datetime={post.data.pubDate.toISOString()}>
+					{post.data.pubDate.toLocaleDateString('en-us', {
+						year: 'numeric',
+						month: 'short',
+						day: 'numeric',
+					})}
+				</time>
+			</div>
+			<hr />
+			<div class="content">
+				<Content />
+			</div>
+		</div>
+	</article>
+</BaseLayout>
+
+<style>
+	.blog-post {
+		padding: 4rem 2rem;
+	}
+
+	.container {
+		max-width: 800px;
+		margin: 0 auto;
+	}
+
+	.post-header {
+		margin-bottom: 2rem;
+	}
+
+	h1 {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+	}
+
+	time {
+		font-size: 1rem;
+		color: var(--accent-color);
+	}
+
+	hr {
+		border: none;
+		border-top: 1px solid #eee;
+		margin-bottom: 3rem;
+	}
+
+	.content :global(p) {
+		font-size: 1.2rem;
+		margin-bottom: 1.5rem;
+		line-height: 1.8;
+	}
+
+	.content :global(h2) {
+		font-size: 2rem;
+		margin-top: 2rem;
+		margin-bottom: 1rem;
+	}
+
+	.content :global(h3) {
+		font-size: 1.5rem;
+		margin-top: 1.5rem;
+		margin-bottom: 1rem;
+	}
+
+	[data-theme='dark'] hr {
+		border-color: #333;
+	}
+</style>

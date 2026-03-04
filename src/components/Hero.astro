@@ -1,0 +1,103 @@
+---
+import { Image } from 'astro:assets';
+import faceImage from '../assets/alessio_face.jpeg';
+---
+
+<section class="hero">
+  <div class="container">
+    <div class="content">
+      <h1>Hi, I'm Alessio 😺</h1>
+      <p class="subtitle">I like solving problems with and without numbers</p>
+      <div class="social-icons">
+        <a href="#" aria-label="Telegram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        </a>
+        <a href="mailto:alessio@example.com" aria-label="Email">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        </a>
+        <a href="https://github.com" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        </a>
+        <a href="https://linkedin.com" aria-label="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </a>
+      </div>
+    </div>
+    <div class="image-wrapper">
+      <Image src={faceImage} alt="Alessio's face" width={300} height={300} class="profile-pic" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: 6rem 2rem;
+    background-color: var(--bg-color);
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+  }
+
+  .content {
+    flex: 1;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    margin-bottom: 2rem;
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .social-icons a {
+    color: var(--text-color);
+    transition: color 0.2s, transform 0.2s;
+  }
+
+  .social-icons a:hover {
+    color: var(--accent-color);
+    transform: translateY(-2px);
+  }
+
+  .image-wrapper {
+    flex-shrink: 0;
+  }
+
+  .profile-pic {
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column-reverse;
+      text-align: center;
+      gap: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    .social-icons {
+      justify-content: center;
+    }
+  }
+</style>

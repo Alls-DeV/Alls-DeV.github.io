@@ -1,0 +1,167 @@
+---
+import { Image } from 'astro:assets';
+
+interface TimelineEntry {
+  years: string;
+  company: string;
+  logo?: ImageMetadata;
+  description: string;
+}
+
+interface Props {
+  entries: TimelineEntry[];
+}
+
+const { entries } = Astro.props;
+---
+
+<section class="timeline">
+  <div class="container">
+    {entries.map((entry) => (
+      <div class="timeline-item">
+        <div class="years">{entry.years}</div>
+        <div class="divider">
+          <div class="dot"></div>
+          <div class="line"></div>
+        </div>
+        {entry.logo ? (
+          <Image src={entry.logo} alt={`${entry.company} logo`} width={64} height={64} class="timeline-logo" />
+        ) : (
+          <div class="placeholder-logo">{entry.company[0]}</div>
+        )}
+        <div class="description">
+          <Fragment set:html={entry.description} />
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .timeline {
+    padding: 6rem 2rem;
+    background-color: var(--bg-color);
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .timeline-item {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .years {
+    width: 120px;
+    text-align: right;
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-top: 5px;
+  }
+
+  .divider {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    background-color: #ddd;
+    border-radius: 50%;
+    z-index: 2;
+    margin-top: 10px;
+  }
+
+  .line {
+    position: absolute;
+    top: 20px;
+    bottom: -4rem; /* Extend to connect to next item */
+    width: 2px;
+    background-color: #eee;
+    z-index: 1;
+  }
+
+  .timeline-item:last-child .line {
+    display: none;
+  }
+
+  .timeline-logo {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    object-fit: contain;
+    border-radius: 8px; /* Slight rounding for square logos */
+  }
+
+  .placeholder-logo {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #eee;
+    font-weight: bold;
+    color: #999;
+    font-size: 1.5rem;
+  }
+
+  .description {
+    flex: 1;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--text-color);
+  }
+
+  .description :global(a) {
+    color: #000;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  [data-theme='dark'] .description :global(a) {
+    color: #fff;
+  }
+
+  .description :global(ol) {
+    margin: 1rem 0;
+    padding-left: 1.2rem;
+  }
+
+  .description :global(li) {
+    margin-bottom: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .timeline-item {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .years {
+      text-align: left;
+      width: auto;
+    }
+
+    .divider {
+      display: none;
+    }
+
+    .timeline-logo,
+    .placeholder-logo {
+      width: 48px;
+      height: 48px;
+    }
+  }
+</style>

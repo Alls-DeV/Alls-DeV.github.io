@@ -1,17 +1,66 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import AboutSection from '../components/AboutSection.astro';
+import Timeline from '../components/Timeline.astro';
 
+// Import logos
+import googleLogo from '../assets/timeline_logos/google_logo.png';
+import amazonLogo from '../assets/timeline_logos/amazon_logo.png';
+import jetbrainsLogo from '../assets/timeline_logos/jetbrains_logo.png';
+import polimiLogo from '../assets/timeline_logos/polimi_logo.png';
+import sapienzaLogo from '../assets/timeline_logos/sapienza_logo.png';
+
+const timelineEntries = [
+  {
+    years: "July 2025 - Oct 2025",
+    company: "Google",
+    logo: googleLogo,
+    description: `<p><strong>SWE Intern @ Google</strong> | Zurich, Switzerland<br/>
+    I built a high-performance C++ clustering algorithm that boosted product processing by over 300% and integrated it into a massive data pipeline. I also wrote Python tools to help train ML models that classify fashion products with over 90% accuracy.</p>`
+  },
+  {
+    years: "July 2024 - Oct 2024",
+    company: "Amazon",
+    logo: amazonLogo,
+    description: `<p><strong>SWE Intern @ Amazon</strong> | Madrid, Spain<br/>
+    I designed an AWS pipeline to automatically spot defects in over 55,000 books. By combining graph algorithms to optimize the workflow with LLMs for analysis, I made the whole process 80% faster. Built mostly with Java, AWS CDK, and TypeScript.</p>`
+  },
+  {
+    years: "Sept 2023 - Present",
+    company: "Polytechnic of Milan",
+    logo: polimiLogo,
+    description: `<p><strong>M.Sc. in AI @ Polytechnic of Milan</strong><br/>
+    Currently diving deep into AI, maintaining a 28.8/30 average, and geeking out with the Competitive Programming team.</p>`
+  },
+  {
+    years: "July 2023 - Oct 2023",
+    company: "JetBrains",
+    logo: jetbrainsLogo,
+    description: `<p><strong>SWE Intern @ JetBrains</strong> | Remote<br/>
+    I worked under the hood of the Rider IDE! I improved the code formatter and used graph algorithms to speed up rendering by 25%. It was a great mix of C# and Kotlin, and I even got to contribute to some open-source plugins along the way.</p>`
+  },
+  {
+    years: "Sept 2020 - Nov 2023",
+    company: "Sapienza University of Rome",
+    logo: sapienzaLogo,
+    description: `<p><strong>B.Sc. in Computer Science @ Sapienza</strong><br/>
+    Graduated with 110/110 cum laude! 🤠 I spent a lot of time doing Competitive Programming and wrote my thesis on using neural networks(U-Net) to detect anomalies in grapes 🍇.</p>`
+  }
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="About">
+  <Hero />
+  <AboutSection />
+  <Timeline entries={timelineEntries} />
+</BaseLayout>
+
+<style>
+  /* Updated styles for paragraph-based descriptions */
+  :global(.description p) {
+    margin-top: 0.5rem;
+    line-height: 1.5;
+    color: #333; /* Optional: soften the text color slightly for readability */
+  }
+</style>
