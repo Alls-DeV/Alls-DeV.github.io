@@ -56,11 +56,11 @@ const timelineEntries = [
   <Timeline entries={timelineEntries} />
 </BaseLayout>
 
-<style>
+<style is:global>
   /* Updated styles for paragraph-based descriptions */
-  :global(.description p) {
+  .description p {
     margin-top: 0.5rem;
     line-height: 1.5;
-    color: #333; /* Optional: soften the text color slightly for readability */
+    color: var(--text-color); /* Updated from #333 to match new variables */
   }
 </style>

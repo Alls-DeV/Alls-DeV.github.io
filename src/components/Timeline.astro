@@ -40,7 +40,6 @@ const { entries } = Astro.props;
 <style>
   .timeline {
     padding: 6rem 2rem;
-    background-color: var(--bg-color);
   }
 
   .container {
@@ -76,10 +75,14 @@ const { entries } = Astro.props;
   .dot {
     width: 10px;
     height: 10px;
-    background-color: #ddd;
+    background-color: var(--base2);
     border-radius: 50%;
     z-index: 2;
     margin-top: 10px;
+  }
+
+  [data-theme='dark'] .dot {
+    background-color: var(--base02);
   }
 
   .line {
@@ -87,8 +90,12 @@ const { entries } = Astro.props;
     top: 20px;
     bottom: -4rem; /* Extend to connect to next item */
     width: 2px;
-    background-color: #eee;
+    background-color: var(--base2);
     z-index: 1;
+  }
+
+  [data-theme='dark'] .line {
+    background-color: var(--base02);
   }
 
   .timeline-item:last-child .line {
@@ -101,6 +108,14 @@ const { entries } = Astro.props;
     flex-shrink: 0;
     object-fit: contain;
     border-radius: 8px; /* Slight rounding for square logos */
+    background-color: var(--base3);
+    padding: 8px;
+    border: 1px solid var(--base2);
+  }
+
+  [data-theme='dark'] .timeline-logo {
+    background-color: var(--base03);
+    border-color: var(--base02);
   }
 
   .placeholder-logo {
@@ -108,14 +123,20 @@ const { entries } = Astro.props;
     height: 64px;
     flex-shrink: 0;
     border-radius: 8px;
-    background-color: #f8f8f8;
+    background-color: var(--base3);
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #eee;
+    border: 1px solid var(--base2);
     font-weight: bold;
-    color: #999;
+    color: var(--base00);
     font-size: 1.5rem;
+  }
+
+  [data-theme='dark'] .placeholder-logo {
+    background-color: var(--base03);
+    border-color: var(--base02);
+    color: var(--base0);
   }
 
   .description {
@@ -126,13 +147,9 @@ const { entries } = Astro.props;
   }
 
   .description :global(a) {
-    color: #000;
+    color: var(--text-color);
     text-decoration: underline;
     text-underline-offset: 2px;
-  }
-
-  [data-theme='dark'] .description :global(a) {
-    color: #fff;
   }
 
   .description :global(ol) {

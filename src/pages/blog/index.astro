@@ -58,7 +58,7 @@ const posts = (await getCollection('blog')).sort(
 
 	.post-item {
 		margin-bottom: 2rem;
-		border-bottom: 1px solid #eee;
+		border-bottom: 1px solid var(--base2);
 		padding-bottom: 2rem;
 	}
 
@@ -99,6 +99,6 @@ const posts = (await getCollection('blog')).sort(
 	}
 
 	[data-theme='dark'] .post-item {
-		border-color: #333;
+		border-color: var(--base02);
 	}
 </style>
