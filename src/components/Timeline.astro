@@ -5,6 +5,7 @@ interface TimelineEntry {
   years: string;
   company: string;
   logo?: ImageMetadata;
+  darkLogo?: ImageMetadata;
   description: string;
 }
 
@@ -24,11 +25,28 @@ const { entries } = Astro.props;
           <div class="dot"></div>
           <div class="line"></div>
         </div>
-        {entry.logo ? (
-          <Image src={entry.logo} alt={`${entry.company} logo`} width={64} height={64} class="timeline-logo" />
-        ) : (
-          <div class="placeholder-logo">{entry.company[0]}</div>
-        )}
+        <div class="logo-container">
+          {entry.logo ? (
+            <Image 
+              src={entry.logo} 
+              alt={`${entry.company} logo`} 
+              width={64} 
+              height={64} 
+              class={`timeline-logo ${entry.darkLogo ? 'light-only' : ''}`} 
+            />
+          ) : !entry.darkLogo && (
+            <div class="placeholder-logo">{entry.company[0]}</div>
+          )}
+          {entry.darkLogo && (
+            <Image 
+              src={entry.darkLogo} 
+              alt={`${entry.company} logo`} 
+              width={64} 
+              height={64} 
+              class="timeline-logo dark-only" 
+            />
+          )}
+        </div>
         <div class="description">
           <Fragment set:html={entry.description} />
         </div>
@@ -81,7 +99,7 @@ const { entries } = Astro.props;
     margin-top: 10px;
   }
 
-  [data-theme='dark'] .dot {
+  :global([data-theme='dark']) .dot {
     background-color: var(--base02);
   }
 
@@ -94,7 +112,7 @@ const { entries } = Astro.props;
     z-index: 1;
   }
 
-  [data-theme='dark'] .line {
+  :global([data-theme='dark']) .line {
     background-color: var(--base02);
   }
 
@@ -103,9 +121,8 @@ const { entries } = Astro.props;
   }
 
   .timeline-logo {
-    width: 64px;
-    height: 64px;
-    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
     border-radius: 8px; /* Slight rounding for square logos */
     background-color: var(--base3);
@@ -113,15 +130,32 @@ const { entries } = Astro.props;
     border: 1px solid var(--base2);
   }
 
-  [data-theme='dark'] .timeline-logo {
+  :global([data-theme='dark']) .timeline-logo {
     background-color: var(--base03);
     border-color: var(--base02);
   }
 
-  .placeholder-logo {
+  .logo-container {
     width: 64px;
     height: 64px;
     flex-shrink: 0;
+  }
+
+  .dark-only {
+    display: none;
+  }
+
+  :global([data-theme='dark']) .light-only {
+    display: none;
+  }
+
+  :global([data-theme='dark']) .dark-only {
+    display: block;
+  }
+
+  .placeholder-logo {
+    width: 100%;
+    height: 100%;
     border-radius: 8px;
     background-color: var(--base3);
     display: flex;
@@ -133,7 +167,7 @@ const { entries } = Astro.props;
     font-size: 1.5rem;
   }
 
-  [data-theme='dark'] .placeholder-logo {
+  :global([data-theme='dark']) .placeholder-logo {
     background-color: var(--base03);
     border-color: var(--base02);
     color: var(--base0);
@@ -176,8 +210,7 @@ const { entries } = Astro.props;
       display: none;
     }
 
-    .timeline-logo,
-    .placeholder-logo {
+    .logo-container {
       width: 48px;
       height: 48px;
     }

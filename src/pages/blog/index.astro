@@ -75,6 +75,10 @@ const posts = (await getCollection('blog')).sort(
 		transform: translateX(5px);
 	}
 
+	.post-item a:hover .post-title {
+		color: var(--secondary-color);
+	}
+
 	.post-header {
 		display: flex;
 		justify-content: space-between;
@@ -98,7 +102,7 @@ const posts = (await getCollection('blog')).sort(
 		opacity: 0.8;
 	}
 
-	[data-theme='dark'] .post-item {
+	:global([data-theme='dark']) .post-item {
 		border-color: var(--base02);
 	}
 </style>

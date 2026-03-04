@@ -6,9 +6,11 @@ import Timeline from '../components/Timeline.astro';
 
 // Import logos
 import googleLogo from '../assets/timeline_logos/google_logo.svg';
-import amazonLogo from '../assets/timeline_logos/amazon_logo.svg';
+import amazonBlackLogo from '../assets/timeline_logos/amazon_black_logo.svg';
+import amazonWhiteLogo from '../assets/timeline_logos/amazon_white_logo.svg';
 import jetbrainsLogo from '../assets/timeline_logos/jetbrains_logo.svg';
-import polimiLogo from '../assets/timeline_logos/polimi_logo2.svg';
+import polimiBlackLogo from '../assets/timeline_logos/polimi_black_logo.svg';
+import polimiWhiteLogo from '../assets/timeline_logos/polimi_white_logo.svg';
 import sapienzaLogo from '../assets/timeline_logos/sapienza_logo.svg';
 
 const timelineEntries = [
@@ -16,20 +18,22 @@ const timelineEntries = [
     years: "July 2025 - Oct 2025",
     company: "Google",
     logo: googleLogo,
-    description: `<p><strong>SWE Intern @ Google</strong> | Zurich, Switzerland<br/>
+    description: `<p><strong>SWE Intern @ Google</strong> | Zurich, Switzerland 🇨🇭<br/>
     I built a high-performance C++ clustering algorithm that boosted product processing by over 300% and integrated it into a data pipeline with over than 100k products. I also wrote Python tools to help train ML models that classify fashion products with over 90% accuracy.</p>`
   },
   {
     years: "July 2024 - Oct 2024",
     company: "Amazon",
-    logo: amazonLogo,
-    description: `<p><strong>SWE Intern @ Amazon</strong> | Madrid, Spain<br/>
+    logo: amazonBlackLogo,
+    darkLogo: amazonWhiteLogo,
+    description: `<p><strong>SWE Intern @ Amazon</strong> | Madrid, Spain 🇪🇸<br/>
     I designed an AWS pipeline to automatically spot defects in over 50k books. By combining graph algorithms to optimize the workflow with LLMs for analysis, I made the whole process 80% faster. Built mostly with Java, AWS CDK, and TypeScript.</p>`
   },
   {
     years: "Sept 2023 - Present",
     company: "Polytechnic of Milan",
-    logo: polimiLogo,
+    logo: polimiBlackLogo,
+    darkLogo: polimiWhiteLogo,
     description: `<p><strong>M.Sc. in AI @ Polytechnic of Milan</strong><br/>
     Currently diving deep into AI, maintaining a 28.8/30 average, and geeking out with the Competitive Programming team.</p>`
   },
@@ -44,7 +48,7 @@ const timelineEntries = [
     years: "Sept 2020 - Nov 2023",
     company: "Sapienza University of Rome",
     logo: sapienzaLogo,
-    description: `<p><strong>B.Sc. in Computer Science @ Sapienza</strong><br/>
+    description: `<p><strong>B.Sc. in Computer Science @ Sapienza University of Rome</strong><br/>
     Graduated with 110/110 cum laude! 🤠 I spent a lot of time doing Competitive Programming and wrote my thesis on using neural networks (U-Net) to detect anomalies in grapes.</p>`
   }
 ];

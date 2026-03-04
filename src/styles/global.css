@@ -31,6 +31,8 @@
     /* Use the 500 or 700 variant for light mode accents so they pop against light backgrounds */
     --accent-color: var(--primary700); 
     --accent-hover: var(--primary500); 
+    --secondary-color: var(--secondary700);
+    --secondary-hover: var(--secondary500);
 }
 
 [data-theme='dark'] {
@@ -43,12 +45,24 @@
     /* Use the 300 variant for dark mode accents to maintain WCAG contrast ratios against dark backgrounds */
     --accent-color: var(--primary300);
     --accent-hover: var(--primary100);
+    --secondary-color: var(--secondary300);
+    --secondary-hover: var(--secondary100);
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+::selection {
+    background-color: var(--secondary-color);
+    color: var(--base4);
+}
+
+[data-theme='dark'] ::selection {
+    background-color: var(--secondary-color);
+    color: var(--base04);
 }
 
 body {
