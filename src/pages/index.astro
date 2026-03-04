@@ -5,11 +5,11 @@ import AboutSection from '../components/AboutSection.astro';
 import Timeline from '../components/Timeline.astro';
 
 // Import logos
-import googleLogo from '../assets/timeline_logos/google_logo.png';
-import amazonLogo from '../assets/timeline_logos/amazon_logo.png';
-import jetbrainsLogo from '../assets/timeline_logos/jetbrains_logo.png';
-import polimiLogo from '../assets/timeline_logos/polimi_logo.png';
-import sapienzaLogo from '../assets/timeline_logos/sapienza_logo.png';
+import googleLogo from '../assets/timeline_logos/google_logo.svg';
+import amazonLogo from '../assets/timeline_logos/amazon_logo.svg';
+import jetbrainsLogo from '../assets/timeline_logos/jetbrains_logo.svg';
+import polimiLogo from '../assets/timeline_logos/polimi_logo2.svg';
+import sapienzaLogo from '../assets/timeline_logos/sapienza_logo.svg';
 
 const timelineEntries = [
   {
@@ -17,14 +17,14 @@ const timelineEntries = [
     company: "Google",
     logo: googleLogo,
     description: `<p><strong>SWE Intern @ Google</strong> | Zurich, Switzerland<br/>
-    I built a high-performance C++ clustering algorithm that boosted product processing by over 300% and integrated it into a massive data pipeline. I also wrote Python tools to help train ML models that classify fashion products with over 90% accuracy.</p>`
+    I built a high-performance C++ clustering algorithm that boosted product processing by over 300% and integrated it into a data pipeline with over than 100k products. I also wrote Python tools to help train ML models that classify fashion products with over 90% accuracy.</p>`
   },
   {
     years: "July 2024 - Oct 2024",
     company: "Amazon",
     logo: amazonLogo,
     description: `<p><strong>SWE Intern @ Amazon</strong> | Madrid, Spain<br/>
-    I designed an AWS pipeline to automatically spot defects in over 55,000 books. By combining graph algorithms to optimize the workflow with LLMs for analysis, I made the whole process 80% faster. Built mostly with Java, AWS CDK, and TypeScript.</p>`
+    I designed an AWS pipeline to automatically spot defects in over 50k books. By combining graph algorithms to optimize the workflow with LLMs for analysis, I made the whole process 80% faster. Built mostly with Java, AWS CDK, and TypeScript.</p>`
   },
   {
     years: "Sept 2023 - Present",
@@ -38,14 +38,14 @@ const timelineEntries = [
     company: "JetBrains",
     logo: jetbrainsLogo,
     description: `<p><strong>SWE Intern @ JetBrains</strong> | Remote<br/>
-    I worked under the hood of the Rider IDE! I improved the code formatter and used graph algorithms to speed up rendering by 25%. It was a great mix of C# and Kotlin, and I even got to contribute to some open-source plugins along the way.</p>`
+    I worked under the hood of the Rider IDE! I improved the code formatter and used graph algorithms to speed up rendering by 25%. It was a mix of C# and Kotlin, and I even got to contribute to some open-source plugins along the way.</p>`
   },
   {
     years: "Sept 2020 - Nov 2023",
     company: "Sapienza University of Rome",
     logo: sapienzaLogo,
     description: `<p><strong>B.Sc. in Computer Science @ Sapienza</strong><br/>
-    Graduated with 110/110 cum laude! 🤠 I spent a lot of time doing Competitive Programming and wrote my thesis on using neural networks(U-Net) to detect anomalies in grapes 🍇.</p>`
+    Graduated with 110/110 cum laude! 🤠 I spent a lot of time doing Competitive Programming and wrote my thesis on using neural networks (U-Net) to detect anomalies in grapes.</p>`
   }
 ];
 ---
