@@ -1,7 +1,7 @@
 ---
 title: "Sports and Fulfillment"
 description: "A deep dive into why I love sports."
-pubDate: "2026-03-03"
+pubDate: "2026-03-04"
 ---
 
-{TODO: Write the blog.}
+TODO
