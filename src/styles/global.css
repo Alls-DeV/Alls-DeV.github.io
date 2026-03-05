@@ -33,6 +33,11 @@
     --accent-hover: var(--primary500); 
     --secondary-color: var(--secondary700);
     --secondary-hover: var(--secondary500);
+
+    --google-blue: #174EA6;
+    --google-red: #A50E0E;
+    --google-yellow: #E37400;
+    --google-green: #0D652D;
 }
 
 [data-theme='dark'] {
@@ -47,6 +52,11 @@
     --accent-hover: var(--primary100);
     --secondary-color: var(--secondary300);
     --secondary-hover: var(--secondary100);
+
+    --google-blue: #4285F4;
+    --google-red: #EA4335;
+    --google-yellow: #FBBC04;
+    --google-green: #34A853;
 }
 
 * {
