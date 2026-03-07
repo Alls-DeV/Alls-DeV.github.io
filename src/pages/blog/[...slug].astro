@@ -85,6 +85,26 @@ const { Content } = await post.render();
 		margin-bottom: 1rem;
 	}
 
+	.content :global(ul),
+	.content :global(ol) {
+		margin-bottom: 1.5rem;
+		padding-left: 2rem;
+	}
+
+	.content :global(ul) {
+		list-style-type: disc;
+	}
+
+	.content :global(ol) {
+		list-style-type: decimal;
+	}
+
+	.content :global(li) {
+		font-size: 1.2rem;
+		margin-bottom: 0.5rem;
+		line-height: 1.8;
+	}
+
 	:global([data-theme='dark']) hr {
 		border-color: var(--base02);
 	}
