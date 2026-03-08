@@ -34,6 +34,4 @@ In this blog I will practice what I learnt.
 
 ## Deep Dive
 
-There are a lot of topics that I studied during the university and that I found interesting, but that I barely rememeber and that probably I have never understood.
-
-The problem with university exams is that, if you want to maximize the grade and minimize the time spent, you should learn how to do the exam, not the subject of the exam. Take all the past exams, do all of them, find patterns and memorize them.
+I'd like to study things that I'm curious about and use this blog to explain what I studied, a sort of Feynman technique.
