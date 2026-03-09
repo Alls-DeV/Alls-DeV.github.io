@@ -1,0 +1,59 @@
+<div class="giscus"></div>
+
+<script is:inline>
+  function getGiscusTheme() {
+    return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  }
+
+  function loadGiscus() {
+    const script = document.createElement("script");
+    script.src = "https://giscus.app/client.js";
+    script.setAttribute("data-repo", "Alls-Dev/Alls-deV.github.io");
+    script.setAttribute("data-repo-id", "R_kgDORb59UA");
+    script.setAttribute("data-category", "Blog Comments");
+    script.setAttribute("data-category-id", "DIC_kwDORb59UM4C4B0I");
+    script.setAttribute("data-mapping", "pathname");
+    script.setAttribute("data-strict", "0");
+    script.setAttribute("data-reactions-enabled", "1");
+    script.setAttribute("data-emit-metadata", "0");
+    script.setAttribute("data-input-position", "bottom");
+    script.setAttribute("data-theme", getGiscusTheme());
+    script.setAttribute("data-lang", "en");
+    script.setAttribute("crossorigin", "anonymous");
+    script.async = true;
+
+    // Append to the giscus container instead of head so we don't duplicate if multiple mounts happen (though shouldn't in this context)
+    document.querySelector('.giscus').appendChild(script);
+  }
+
+  // Ensure it only loads once and waits for DOM if necessary
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadGiscus);
+  } else {
+    loadGiscus();
+  }
+
+  // Listen to theme changes from the parent layout
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.attributeName === 'data-theme') {
+        const newTheme = getGiscusTheme();
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage(
+          { giscus: { setConfig: { theme: newTheme } } },
+          'https://giscus.app'
+        );
+      }
+    });
+  });
+
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+</script>
+
+<style>
+  .giscus {
+    margin-top: 4rem;
+    width: 100%;
+  }
+</style>
