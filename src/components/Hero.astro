@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
-import faceImage from '../assets/alessio_face.jpeg';
+import cat1 from '../assets/cat1.jpg';
+import cat2 from '../assets/cat2.jpg';
 ---
 
 <section class="hero">
@@ -23,7 +24,8 @@ import faceImage from '../assets/alessio_face.jpeg';
         </a>
       </div>    </div>
     <div class="image-wrapper">
-      <Image src={faceImage} alt="Alessio's face" width={300} height={300} class="profile-pic" />
+      <Image src={cat1} alt="A cute cat (light theme)" width={300} height={300} class="profile-pic light-only" />
+      <Image src={cat2} alt="A cute cat (dark theme)" width={300} height={300} class="profile-pic dark-only" />
     </div>
   </div>
 </section>
@@ -83,6 +85,22 @@ import faceImage from '../assets/alessio_face.jpeg';
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   }
 
+  .light-only {
+    display: block;
+  }
+
+  .dark-only {
+    display: none;
+  }
+
+  :global([data-theme='dark']) .light-only {
+    display: none;
+  }
+
+  :global([data-theme='dark']) .dark-only {
+    display: block;
+  }
+
   @media (max-width: 768px) {
     .container {
       flex-direction: column-reverse;
@@ -99,3 +117,4 @@ import faceImage from '../assets/alessio_face.jpeg';
     }
   }
 </style>
+
